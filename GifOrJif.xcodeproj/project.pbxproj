@@ -15,6 +15,7 @@
 		05C0835D219DFA07000C58A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835C219DFA07000C58A2 /* Constants.swift */; };
 		05C08360219DFF70000C58A2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835F219DFF70000C58A2 /* BaseViewController.swift */; };
 		05C08363219E019B000C58A2 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */; };
+		C47D7D2F028D44981D4F6B7F /* Pods_GifOrJif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B3826F4F47784AC16D2A92 /* Pods_GifOrJif.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,9 @@
 		05C0835C219DFA07000C58A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05C0835F219DFF70000C58A2 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		10B3826F4F47784AC16D2A92 /* Pods_GifOrJif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifOrJif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		592A0A7F2C432A6E802C1F22 /* Pods-GifOrJif.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifOrJif.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifOrJif/Pods-GifOrJif.release.xcconfig"; sourceTree = "<group>"; };
+		8036167D9F759266240A753A /* Pods-GifOrJif.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifOrJif.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifOrJif/Pods-GifOrJif.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47D7D2F028D44981D4F6B7F /* Pods_GifOrJif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,8 @@
 			children = (
 				0551A1EB219DEAF100D3E251 /* GifOrJif */,
 				0551A1EA219DEAF100D3E251 /* Products */,
+				129A221957E071E3BB0781A9 /* Pods */,
+				F0F4B13685E586646B3C5CB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +96,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		129A221957E071E3BB0781A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8036167D9F759266240A753A /* Pods-GifOrJif.debug.xcconfig */,
+				592A0A7F2C432A6E802C1F22 /* Pods-GifOrJif.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F0F4B13685E586646B3C5CB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10B3826F4F47784AC16D2A92 /* Pods_GifOrJif.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,6 +120,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0551A1FB219DEAF400D3E251 /* Build configuration list for PBXNativeTarget "GifOrJif" */;
 			buildPhases = (
+				AB9640E4A6A5C0C2350FD750 /* [CP] Check Pods Manifest.lock */,
 				0551A1E5219DEAF100D3E251 /* Sources */,
 				0551A1E6219DEAF100D3E251 /* Frameworks */,
 				0551A1E7219DEAF100D3E251 /* Resources */,
@@ -154,6 +179,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB9640E4A6A5C0C2350FD750 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GifOrJif-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0551A1E5219DEAF100D3E251 /* Sources */ = {
@@ -308,12 +358,14 @@
 		};
 		0551A1FC219DEAF400D3E251 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8036167D9F759266240A753A /* Pods-GifOrJif.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GifOrJif/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,12 +380,14 @@
 		};
 		0551A1FD219DEAF400D3E251 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 592A0A7F2C432A6E802C1F22 /* Pods-GifOrJif.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GifOrJif/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
