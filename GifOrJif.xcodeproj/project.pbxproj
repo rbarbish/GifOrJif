@@ -124,6 +124,7 @@
 				0551A1E5219DEAF100D3E251 /* Sources */,
 				0551A1E6219DEAF100D3E251 /* Frameworks */,
 				0551A1E7219DEAF100D3E251 /* Resources */,
+				059F42A2219E1CE90014C305 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -181,6 +182,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		059F42A2219E1CE90014C305 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3dfe870c24db479a9f83c1638d14dcfc4fcb62e0 3f699f160b64f125ec56023014132312cfb963d6215b2e859d03ac828c39a0a4\n";
+		};
 		AB9640E4A6A5C0C2350FD750 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GifOrJif/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -385,6 +405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GifOrJif/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
