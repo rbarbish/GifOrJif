@@ -12,6 +12,8 @@
 		0551A1F2219DEAF100D3E251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0551A1F0219DEAF100D3E251 /* Main.storyboard */; };
 		0551A1F4219DEAF400D3E251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0551A1F3219DEAF400D3E251 /* Assets.xcassets */; };
 		0551A1F7219DEAF400D3E251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0551A1F5219DEAF400D3E251 /* LaunchScreen.storyboard */; };
+		059F42A4219E28370014C305 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42A3219E28370014C305 /* UIColorExtension.swift */; };
+		059F42A8219E33480014C305 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42A7219E33480014C305 /* UINavigationControllerExtension.swift */; };
 		05C0835D219DFA07000C58A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835C219DFA07000C58A2 /* Constants.swift */; };
 		05C08360219DFF70000C58A2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835F219DFF70000C58A2 /* BaseViewController.swift */; };
 		05C08363219E019B000C58A2 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */; };
@@ -26,6 +28,8 @@
 		0551A1F3219DEAF400D3E251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0551A1F6219DEAF400D3E251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0551A1F8219DEAF400D3E251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		059F42A3219E28370014C305 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		059F42A7219E33480014C305 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		05C0835C219DFA07000C58A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05C0835F219DFF70000C58A2 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */,
+				059F42A3219E28370014C305 /* UIColorExtension.swift */,
+				059F42A7219E33480014C305 /* UINavigationControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 				0551A1E6219DEAF100D3E251 /* Frameworks */,
 				0551A1E7219DEAF100D3E251 /* Resources */,
 				059F42A2219E1CE90014C305 /* Fabric */,
+				95FA2F3AA07656AF733BFAB2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,6 +207,28 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3dfe870c24db479a9f83c1638d14dcfc4fcb62e0 3f699f160b64f125ec56023014132312cfb963d6215b2e859d03ac828c39a0a4\n";
 		};
+		95FA2F3AA07656AF733BFAB2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GifOrJif/Pods-GifOrJif-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifOrJif/Pods-GifOrJif-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB9640E4A6A5C0C2350FD750 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,11 +258,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				059F42A8219E33480014C305 /* UINavigationControllerExtension.swift in Sources */,
 				0551A1EF219DEAF100D3E251 /* ImageListViewController.swift in Sources */,
 				05C08360219DFF70000C58A2 /* BaseViewController.swift in Sources */,
 				05C08363219E019B000C58A2 /* UIViewControllerExtension.swift in Sources */,
 				0551A1ED219DEAF100D3E251 /* AppDelegate.swift in Sources */,
 				05C0835D219DFA07000C58A2 /* Constants.swift in Sources */,
+				059F42A4219E28370014C305 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

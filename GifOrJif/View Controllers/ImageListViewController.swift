@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import RevealingSplashView
 
 class ImageListViewController: BaseViewController {
-
+    
+    var style:UIStatusBarStyle = .lightContent
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.style
+    }
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -22,16 +29,31 @@ class ImageListViewController: BaseViewController {
     
     private func setupView() {
         setupBackground()
+        setupRevealingView()
     }
     
     private func setupBackground() {
-        guard let bgImage = UIImage(named: "background") else { return }
+        guard let imgBG = UIImage(named: "background") else { return }
         UIGraphicsBeginImageContext(view.frame.size)
-        bgImage.draw(in: view.bounds)
+        imgBG.draw(in: view.bounds)
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
             UIGraphicsEndImageContext()
             view.backgroundColor = UIColor(patternImage: image)
         }
     }
+    
+    private func setupRevealingView() {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        guard let imgIcon = UIImage(named: "splashLogo") else { return }
+        let revealingSplashView = RevealingSplashView(iconImage: imgIcon,iconInitialSize: CGSize(width: 150, height: 150), backgroundColor: .rbDarkBlue)
+        revealingSplashView.animationType = .popAndZoomOut
+        revealingSplashView.startAnimation { [weak self] in
+            guard let tvc = self else { return }
+            tvc.style = .default
+            tvc.setNeedsStatusBarAppearanceUpdate()
+        }
+        window.addSubview(revealingSplashView)
+    }
+    
 }
 
