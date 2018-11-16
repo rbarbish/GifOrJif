@@ -22,12 +22,6 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     private var isFetching = false
     private let perPage = 10
     
-    private var canFetchNextPage: Bool {
-        get {
-            return currentPage < totalPages || currentPage == 1
-        }
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.style
     }
@@ -153,6 +147,7 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     //MARK: - Fetch Data
     
     @objc func refreshData() {
+        tableView.refreshControl?.endRefreshing()
         currentPage = 1
         fetchData()
     }
