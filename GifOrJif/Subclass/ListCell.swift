@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 protocol ListCellDelegate:class {
-    func didSelectImage(idx:Int)
+    func didSelectImage(imgView: UIImageView)
 }
 
 class ListCell: UITableViewCell {
     
     weak var delegate:ListCellDelegate?
-    @IBOutlet weak var imgCover: UIImageView!
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var viewForeground: UIView!
     var idx = 0
     
@@ -31,7 +31,7 @@ class ListCell: UITableViewCell {
     }
     
     @IBAction func atnImage(imgButton: UIButton) {
-        delegate?.didSelectImage(idx: idx)
+        delegate?.didSelectImage(imgView: imgView)
     }
     
 }

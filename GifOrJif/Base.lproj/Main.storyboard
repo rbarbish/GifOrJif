@@ -36,7 +36,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-P2-kQx">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" rowHeight="200" id="FpP-AE-kWp" customClass="ListCell" customModule="GifOrJif" customModuleProvider="target">
@@ -82,15 +82,16 @@
                                                 <constraint firstItem="Gsz-nF-oRI" firstAttribute="leading" secondItem="Lz0-M1-vAA" secondAttribute="leading" constant="15" id="qnG-nl-gRu"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="imgCover" destination="R8a-hV-Ejg" id="6af-ue-rcu"/>
+                                            <outlet property="imgView" destination="R8a-hV-Ejg" id="bY0-ci-s7v"/>
                                             <outlet property="viewForeground" destination="Gsz-nF-oRI" id="c0s-1n-2th"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="LkJ-IB-I50" id="r5A-30-pYT"/>
+                                    <outlet property="delegate" destination="LkJ-IB-I50" id="tlv-35-fI2"/>
                                 </connections>
                             </tableView>
                         </subviews>

@@ -9,10 +9,11 @@
 import UIKit
 import RevealingSplashView
 
-class ImageListViewController: BaseViewController, UITableViewDataSource, ListCellDelegate {
+class ImageListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ListCellDelegate {
     
     @IBOutlet weak var tableView:UITableView!
-    var style:UIStatusBarStyle = .lightContent
+    private var timerSearch: Timer?
+    private var style:UIStatusBarStyle = .lightContent
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.style
@@ -32,6 +33,19 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, ListCe
         setupBackground()
         setupRevealingView()
         setupTable()
+        setupNavBar()
+        setupSearchController()
+    }
+    
+    private func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+    }
+    
+    private func setupNavBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setupTable() {
@@ -55,7 +69,6 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, ListCe
         guard let window = UIApplication.shared.keyWindow else { return }
         guard let imgIcon = UIImage(named: "splashLogo") else { return }
         let revealingSplashView = RevealingSplashView(iconImage: imgIcon,iconInitialSize: CGSize(width: 150, height: 150), backgroundColor: .rbDarkBlue)
-        revealingSplashView.animationType = .popAndZoomOut
         revealingSplashView.startAnimation { [weak self] in
             guard let tvc = self else { return }
             tvc.style = .default
@@ -66,8 +79,12 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, ListCe
     
     //MARK: - ListCellDelegate
     
-    func didSelectImage(idx: Int) {
-        
+    func didSelectImage(imgView: UIImageView) {
+        let configuration = ImageViewerConfiguration { config in
+            config.imageView = imgView
+        }
+        let imageViewerController = ImageViewerController(configuration: configuration)
+        present(imageViewerController, animated: true)
     }
     
     //MARK: - UITableViewDelegate
@@ -86,6 +103,10 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, ListCe
         return cell
     }
     
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
     //MARK: - Fetch Data
     
     @objc func refreshHandler() {
@@ -95,5 +116,12 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, ListCe
     func fetchData() {
         
     }
+    
+    //MARK: - SearchBarDelegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+    
 }
 

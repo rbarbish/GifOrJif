@@ -9,7 +9,6 @@
 import UIKit
 import Fabric
 import Crashlytics
-import RevealingSplashView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
