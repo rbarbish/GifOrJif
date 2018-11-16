@@ -8,11 +8,7 @@
 
 import Foundation
 
-struct API{
-    static let INSTAGRAM_AUTHURL = "https://api.instagram.com/oauth/authorize/"
-    static let INSTAGRAM_CLIENT_ID = "732c1ead483a433fb04dc015c3431a70"
-    static let INSTAGRAM_CLIENTSERCRET = "ee671096ca4a4ef9abda27ee5eb3da94"
-    static let INSTAGRAM_REDIRECT_URI = "https://www.davidseek.com/just_a_made_up_dummy_url"
-    //static let INSTAGRAM_ACCESS_TOKEN = "access_token"
-    static let INSTAGRAM_SCOPE = "basic+public_content"
+struct API {
+    static let ACCESS_KEY = "5baf9f31ac789e6e171786b366fc9e0fd9ec32e0ce6eefb9590d0ddd9cf0ebf7"
+    static let SECRET_KEY = "584ca19e60cea05138e8623a207a722a3a3ed86b4bcc0d06ce23912e1ea66385"
 }

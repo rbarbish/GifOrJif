@@ -6,5 +6,6 @@ target 'GifOrJif' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'RevealingSplashView'
+  pod 'Kingfisher'
 end
 

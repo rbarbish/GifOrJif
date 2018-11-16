@@ -14,6 +14,17 @@
 		0551A1F7219DEAF400D3E251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0551A1F5219DEAF400D3E251 /* LaunchScreen.storyboard */; };
 		059F42A4219E28370014C305 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42A3219E28370014C305 /* UIColorExtension.swift */; };
 		059F42A8219E33480014C305 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42A7219E33480014C305 /* UINavigationControllerExtension.swift */; };
+		059F42AB219E3BC50014C305 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42AA219E3BC50014C305 /* ListCell.swift */; };
+		059F42BB219E51290014C305 /* ImageViewerTransitioningHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42AE219E51290014C305 /* ImageViewerTransitioningHandler.swift */; };
+		059F42BC219E51290014C305 /* ImageViewerDismissalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42AF219E51290014C305 /* ImageViewerDismissalInteractor.swift */; };
+		059F42BD219E51290014C305 /* ImageViewerPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42B0219E51290014C305 /* ImageViewerPresentationTransition.swift */; };
+		059F42BE219E51290014C305 /* ImageViewerDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42B1219E51290014C305 /* ImageViewerDismissalTransition.swift */; };
+		059F42BF219E51290014C305 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42B2219E51290014C305 /* Utilities.swift */; };
+		059F42C0219E51290014C305 /* ImageViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42B4219E51290014C305 /* ImageViewerController.swift */; };
+		059F42C1219E51290014C305 /* ImageViewer-Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059F42B6219E51290014C305 /* ImageViewer-Assets.xcassets */; };
+		059F42C2219E51290014C305 /* ImageViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 059F42B7219E51290014C305 /* ImageViewerController.xib */; };
+		059F42C4219E51290014C305 /* AnimatableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42B9219E51290014C305 /* AnimatableImageView.swift */; };
+		059F42C5219E51290014C305 /* ImageViewerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42BA219E51290014C305 /* ImageViewerConfiguration.swift */; };
 		05C0835D219DFA07000C58A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835C219DFA07000C58A2 /* Constants.swift */; };
 		05C08360219DFF70000C58A2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835F219DFF70000C58A2 /* BaseViewController.swift */; };
 		05C08363219E019B000C58A2 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */; };
@@ -30,6 +41,17 @@
 		0551A1F8219DEAF400D3E251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		059F42A3219E28370014C305 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		059F42A7219E33480014C305 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		059F42AA219E3BC50014C305 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		059F42AE219E51290014C305 /* ImageViewerTransitioningHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerTransitioningHandler.swift; sourceTree = "<group>"; };
+		059F42AF219E51290014C305 /* ImageViewerDismissalInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerDismissalInteractor.swift; sourceTree = "<group>"; };
+		059F42B0219E51290014C305 /* ImageViewerPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerPresentationTransition.swift; sourceTree = "<group>"; };
+		059F42B1219E51290014C305 /* ImageViewerDismissalTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerDismissalTransition.swift; sourceTree = "<group>"; };
+		059F42B2219E51290014C305 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		059F42B4219E51290014C305 /* ImageViewerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerController.swift; sourceTree = "<group>"; };
+		059F42B6219E51290014C305 /* ImageViewer-Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "ImageViewer-Assets.xcassets"; sourceTree = "<group>"; };
+		059F42B7219E51290014C305 /* ImageViewerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewerController.xib; sourceTree = "<group>"; };
+		059F42B9219E51290014C305 /* AnimatableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableImageView.swift; sourceTree = "<group>"; };
+		059F42BA219E51290014C305 /* ImageViewerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerConfiguration.swift; sourceTree = "<group>"; };
 		05C0835C219DFA07000C58A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05C0835F219DFF70000C58A2 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -71,6 +93,8 @@
 		0551A1EB219DEAF100D3E251 /* GifOrJif */ = {
 			isa = PBXGroup;
 			children = (
+				059F42AC219E50070014C305 /* SimpleImageViewer */,
+				059F42A9219E3BAE0014C305 /* Subclass */,
 				05C08361219E003A000C58A2 /* Extensions */,
 				05C0835E219DFF57000C58A2 /* View Controllers */,
 				0551A1EC219DEAF100D3E251 /* AppDelegate.swift */,
@@ -81,6 +105,47 @@
 				0551A1F8219DEAF400D3E251 /* Info.plist */,
 			);
 			path = GifOrJif;
+			sourceTree = "<group>";
+		};
+		059F42A9219E3BAE0014C305 /* Subclass */ = {
+			isa = PBXGroup;
+			children = (
+				059F42AA219E3BC50014C305 /* ListCell.swift */,
+			);
+			path = Subclass;
+			sourceTree = "<group>";
+		};
+		059F42AC219E50070014C305 /* SimpleImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				059F42B9219E51290014C305 /* AnimatableImageView.swift */,
+				059F42BA219E51290014C305 /* ImageViewerConfiguration.swift */,
+				059F42B4219E51290014C305 /* ImageViewerController.swift */,
+				059F42B5219E51290014C305 /* Resources */,
+				059F42AD219E51290014C305 /* Transitions */,
+				059F42B2219E51290014C305 /* Utilities.swift */,
+			);
+			path = SimpleImageViewer;
+			sourceTree = "<group>";
+		};
+		059F42AD219E51290014C305 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				059F42AE219E51290014C305 /* ImageViewerTransitioningHandler.swift */,
+				059F42AF219E51290014C305 /* ImageViewerDismissalInteractor.swift */,
+				059F42B0219E51290014C305 /* ImageViewerPresentationTransition.swift */,
+				059F42B1219E51290014C305 /* ImageViewerDismissalTransition.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		059F42B5219E51290014C305 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				059F42B6219E51290014C305 /* ImageViewer-Assets.xcassets */,
+				059F42B7219E51290014C305 /* ImageViewerController.xib */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		05C0835E219DFF57000C58A2 /* View Controllers */ = {
@@ -180,7 +245,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				059F42C1219E51290014C305 /* ImageViewer-Assets.xcassets in Resources */,
 				0551A1F7219DEAF400D3E251 /* LaunchScreen.storyboard in Resources */,
+				059F42C2219E51290014C305 /* ImageViewerController.xib in Resources */,
 				0551A1F4219DEAF400D3E251 /* Assets.xcassets in Resources */,
 				0551A1F2219DEAF100D3E251 /* Main.storyboard in Resources */,
 			);
@@ -216,12 +283,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GifOrJif/Pods-GifOrJif-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,11 +327,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				059F42BC219E51290014C305 /* ImageViewerDismissalInteractor.swift in Sources */,
+				059F42C4219E51290014C305 /* AnimatableImageView.swift in Sources */,
+				059F42BB219E51290014C305 /* ImageViewerTransitioningHandler.swift in Sources */,
 				059F42A8219E33480014C305 /* UINavigationControllerExtension.swift in Sources */,
 				0551A1EF219DEAF100D3E251 /* ImageListViewController.swift in Sources */,
+				059F42BF219E51290014C305 /* Utilities.swift in Sources */,
+				059F42C5219E51290014C305 /* ImageViewerConfiguration.swift in Sources */,
+				059F42BD219E51290014C305 /* ImageViewerPresentationTransition.swift in Sources */,
 				05C08360219DFF70000C58A2 /* BaseViewController.swift in Sources */,
 				05C08363219E019B000C58A2 /* UIViewControllerExtension.swift in Sources */,
 				0551A1ED219DEAF100D3E251 /* AppDelegate.swift in Sources */,
+				059F42C0219E51290014C305 /* ImageViewerController.swift in Sources */,
+				059F42BE219E51290014C305 /* ImageViewerDismissalTransition.swift in Sources */,
+				059F42AB219E3BC50014C305 /* ListCell.swift in Sources */,
 				05C0835D219DFA07000C58A2 /* Constants.swift in Sources */,
 				059F42A4219E28370014C305 /* UIColorExtension.swift in Sources */,
 			);

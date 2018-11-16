@@ -9,8 +9,9 @@
 import UIKit
 import RevealingSplashView
 
-class ImageListViewController: BaseViewController {
+class ImageListViewController: BaseViewController, UITableViewDataSource, ListCellDelegate {
     
+    @IBOutlet weak var tableView:UITableView!
     var style:UIStatusBarStyle = .lightContent
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -30,6 +31,14 @@ class ImageListViewController: BaseViewController {
     private func setupView() {
         setupBackground()
         setupRevealingView()
+        setupTable()
+    }
+    
+    private func setupTable() {
+        tableView.separatorStyle = .none
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.tintColor = .white
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshHandler), for: .valueChanged)
     }
     
     private func setupBackground() {
@@ -55,5 +64,36 @@ class ImageListViewController: BaseViewController {
         window.addSubview(revealingSplashView)
     }
     
+    //MARK: - ListCellDelegate
+    
+    func didSelectImage(idx: Int) {
+        
+    }
+    
+    //MARK: - UITableViewDelegate
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as? ListCell else { return UITableViewCell() }
+        cell.setupCell(idx: indexPath.row)
+        return cell
+    }
+    
+    //MARK: - Fetch Data
+    
+    @objc func refreshHandler() {
+        fetchData()
+    }
+    
+    func fetchData() {
+        
+    }
 }
 

@@ -2,24 +2,28 @@ PODS:
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - Fabric (1.7.13)
+  - Kingfisher (4.10.1)
   - RevealingSplashView (0.6.0)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
+  - Kingfisher
   - RevealingSplashView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Crashlytics
     - Fabric
+    - Kingfisher
     - RevealingSplashView
 
 SPEC CHECKSUMS:
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
 
-PODFILE CHECKSUM: 83640999de1379aea8476116182ba770743003b8
+PODFILE CHECKSUM: 4cdd15c52a9c4a47182dcc1d353b2c14a4db1597
 
 COCOAPODS: 1.5.3
