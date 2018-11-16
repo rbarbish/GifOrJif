@@ -12,6 +12,7 @@ import RevealingSplashView
 class ImageListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ListCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblNoResults: UILabel!
     private var timerSearch: Timer?
     private var style:UIStatusBarStyle = .lightContent
     private var searchController: UISearchController?
@@ -53,6 +54,7 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     private func setupTable() {
+        tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.tintColor = .white
@@ -91,6 +93,18 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
         present(imageViewerController, animated: true)
     }
     
+    func didSelectUser(username: String) {
+        guard let iURL = URL(string: "instagram://user?username=\(username)") else {
+            showGenericError()
+            return
+        }
+        guard UIApplication.shared.canOpenURL(iURL) else {
+            presentAlert(message: "Instagram is not installed")
+            return
+        }
+        UIApplication.shared.open(iURL, options: [:], completionHandler: nil)
+    }
+    
     //MARK: - UITableViewDelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -98,7 +112,9 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrImageInfo.count
+        let arrCount = arrImageInfo.count
+        lblNoResults.isHidden = arrCount > 0
+        return arrCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,11 +122,12 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
         let idx = indexPath.row
         let info = arrImageInfo[idx]
         cell.setupCell(imageInfo: info, idx: indexPath.row)
+        cell.delegate = self
         return cell
     }
     
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 215
     }
     
     //MARK: - Fetch Data
@@ -147,7 +164,12 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     //MARK: - SearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !(searchBar.text?.isEmpty ?? true) else { return }
+        timerSearch?.invalidate()
+        guard !(searchBar.text?.isEmpty ?? true) else {
+            arrImageInfo.removeAll(keepingCapacity: false)
+            tableView.reloadData()
+            return
+        }
         timerSearch = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(ImageListViewController.fetchData), userInfo: nil, repeats: false)
     }
     
