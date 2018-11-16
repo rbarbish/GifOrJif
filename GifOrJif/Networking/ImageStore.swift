@@ -13,8 +13,8 @@ class ImageStore: NSObject
     
     static let instance = ImageStore()
     
-    func fetchImages(searchWord: String, completion: @escaping (Data?, URLResponse?, Bool) -> ()) {
-        guard let url = URL(string: "https://api.unsplash.com/search/photos?page=1&query=\(searchWord)") else {
+    func fetchImages(searchWord: String, perPage: Int, pageNum: Int, completion: @escaping (Data?, URLResponse?, Bool) -> ()) {
+        guard let url = URL(string: "https://api.unsplash.com/search/photos?per_page=\(perPage)&page=\(pageNum)&query=\(searchWord)") else {
             completion(nil, nil, false)
             return
         }

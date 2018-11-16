@@ -17,6 +17,16 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     private var style:UIStatusBarStyle = .lightContent
     private var searchController: UISearchController?
     private var arrImageInfo = [ImageInfo]()
+    private var currentPage = 1
+    private var totalPages = 1
+    private var isFetching = false
+    private let perPage = 10
+    
+    private var canFetchNextPage: Bool {
+        get {
+            return currentPage < totalPages || currentPage == 1
+        }
+    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.style
@@ -47,6 +57,7 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         searchController?.searchBar.text = "Ramen"
+        searchController?.searchBar.returnKeyType = .done
     }
     
     private func setupNavBar() {
@@ -55,10 +66,11 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     
     private func setupTable() {
         tableView.allowsSelection = false
+        tableView.estimatedRowHeight = 215
         tableView.separatorStyle = .none
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.tintColor = .white
-        tableView.refreshControl?.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
     private func setupBackground() {
@@ -126,37 +138,65 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let idx = indexPath.row
+        if arrImageInfo.count >= perPage, !isFetching, perPage * currentPage == idx + 1 {
+            currentPage = currentPage + 1
+            fetchData(shouldAppend: true)
+        }
+    }
+    
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 215
     }
     
     //MARK: - Fetch Data
     
-    @objc func fetchData() {
+    @objc func refreshData() {
+        currentPage = 1
+        fetchData()
+    }
+    
+    @objc func fetchData(shouldAppend:Bool = false) {
         guard let sc = searchController, let searchText = sc.searchBar.text else { return }
+        isFetching = true
         showSpinnerWithText(text: "Loading")
-        ImageStore.instance.fetchImages(searchWord: searchText) { [weak self] (data, response, success) in
+        ImageStore.instance.fetchImages(searchWord: searchText, perPage: perPage, pageNum: currentPage) { [weak self] (data, response, success) in
             guard let tvc = self else { return }
             DispatchQueue.main.async {
                 guard let data = data, success else {
+                    tvc.isFetching = false
                     tvc.showErrorHUD(text: "Something went wrong")
                     return
                 }
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                    guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else {
+                        tvc.isFetching = false
+                        tvc.hideSpinnerIfVisible()
+                        return
+                    }
+                    tvc.isFetching = false
+                    tvc.hideSpinnerIfVisible()
                     let results = json["results"] as? [[String: Any]] ?? []
-                    tvc.arrImageInfo.removeAll(keepingCapacity: false)
+                    tvc.totalPages = json["results"] as? Int ?? 1
+                    if !shouldAppend {
+                        tvc.arrImageInfo.removeAll(keepingCapacity: false)
+                    }
                     for item in results {
                         let imageInfo = ImageInfo(dataDict: item)
                         tvc.arrImageInfo.append(imageInfo)
                     }
-                    tvc.hideSpinnerIfVisible()
-                    tvc.tableView.reloadData()
+                    if !shouldAppend {
+                        tvc.tableView.reloadData()
+                    }
+                    else {
+                        tvc.tableView.insertRows(at: tvc.indexPathsOfNewImages, with: .automatic)
+                    }
                 } catch _ {
+                    tvc.isFetching = false
                     tvc.showErrorHUD(text: "Something went wrong")
                     return
                 }
-                
             }
         }
     }
@@ -170,7 +210,24 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
             tableView.reloadData()
             return
         }
-        timerSearch = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(ImageListViewController.fetchData), userInfo: nil, repeats: false)
+        timerSearch = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(ImageListViewController.refreshData), userInfo: nil, repeats: false)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController?.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: - Utilities
+    
+    private var indexPathsOfNewImages: [IndexPath] {
+        get {
+            var ips = [IndexPath]()
+            for i in 0..<perPage {
+                let newIP = IndexPath(row: perPage * (currentPage - 1) + i, section: 0)
+                ips.append(newIP)
+            }
+            return ips
+        }
     }
     
 }
