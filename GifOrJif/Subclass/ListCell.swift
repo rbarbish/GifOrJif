@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Kingfisher
 import UIKit
 
 protocol ListCellDelegate:class {
@@ -26,7 +27,10 @@ class ListCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setupCell(idx: Int) {
+    func setupCell(imageInfo: ImageInfo, idx: Int) {
+        if let url = imageInfo.imgURLSmall {
+            imgView.kf.setImage(with: url)
+        }
         self.idx = idx
     }
     

@@ -11,9 +11,11 @@ import RevealingSplashView
 
 class ImageListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ListCellDelegate {
     
-    @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var tableView: UITableView!
     private var timerSearch: Timer?
     private var style:UIStatusBarStyle = .lightContent
+    private var searchController: UISearchController?
+    private var arrImageInfo = [ImageInfo]()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.style
@@ -25,6 +27,7 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         setupView()
+        fetchData()
     }
 
     //MARK: - Layout
@@ -38,10 +41,11 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     private func setupSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchBar.delegate = self
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
+        searchController?.searchBar.text = "Ramen"
     }
     
     private func setupNavBar() {
@@ -52,7 +56,7 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
         tableView.separatorStyle = .none
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.tintColor = .white
-        tableView.refreshControl?.addTarget(self, action: #selector(refreshHandler), for: .valueChanged)
+        tableView.refreshControl?.addTarget(self, action: #selector(fetchData), for: .valueChanged)
     }
     
     private func setupBackground() {
@@ -94,12 +98,14 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return arrImageInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as? ListCell else { return UITableViewCell() }
-        cell.setupCell(idx: indexPath.row)
+        let idx = indexPath.row
+        let info = arrImageInfo[idx]
+        cell.setupCell(imageInfo: info, idx: indexPath.row)
         return cell
     }
     
@@ -109,19 +115,40 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     
     //MARK: - Fetch Data
     
-    @objc func refreshHandler() {
-        fetchData()
-    }
-    
-    func fetchData() {
-        
+    @objc func fetchData() {
+        guard let sc = searchController, let searchText = sc.searchBar.text else { return }
+        showSpinnerWithText(text: "Loading")
+        ImageStore.instance.fetchImages(searchWord: searchText) { [weak self] (data, response, success) in
+            guard let tvc = self else { return }
+            DispatchQueue.main.async {
+                guard let data = data, success else {
+                    tvc.showErrorHUD(text: "Something went wrong")
+                    return
+                }
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                    let results = json["results"] as? [[String: Any]] ?? []
+                    tvc.arrImageInfo.removeAll(keepingCapacity: false)
+                    for item in results {
+                        let imageInfo = ImageInfo(dataDict: item)
+                        tvc.arrImageInfo.append(imageInfo)
+                    }
+                    tvc.hideSpinnerIfVisible()
+                    tvc.tableView.reloadData()
+                } catch _ {
+                    tvc.showErrorHUD(text: "Something went wrong")
+                    return
+                }
+                
+            }
+        }
     }
     
     //MARK: - SearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        guard !(searchBar.text?.isEmpty ?? true) else { return }
+        timerSearch = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(ImageListViewController.fetchData), userInfo: nil, repeats: false)
     }
     
 }
-

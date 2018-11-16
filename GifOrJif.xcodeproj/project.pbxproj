@@ -28,6 +28,7 @@
 		059F42CA219E69490014C305 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F42C9219E69490014C305 /* MBProgressHUD.m */; };
 		059F42CC219E6A3F0014C305 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42CB219E6A3F0014C305 /* UIImageExtension.swift */; };
 		059F42CE219E6E6C0014C305 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42CD219E6E6C0014C305 /* ImageStore.swift */; };
+		059F42D2219E71D20014C305 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F42D1219E71D20014C305 /* ImageInfo.swift */; };
 		05C0835D219DFA07000C58A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835C219DFA07000C58A2 /* Constants.swift */; };
 		05C08360219DFF70000C58A2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0835F219DFF70000C58A2 /* BaseViewController.swift */; };
 		05C08363219E019B000C58A2 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */; };
@@ -60,6 +61,7 @@
 		059F42C9219E69490014C305 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		059F42CB219E6A3F0014C305 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		059F42CD219E6E6C0014C305 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		059F42D1219E71D20014C305 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		05C0835C219DFA07000C58A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05C0835F219DFF70000C58A2 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		05C08362219E019B000C58A2 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		0551A1EB219DEAF100D3E251 /* GifOrJif */ = {
 			isa = PBXGroup;
 			children = (
+				059F42D0219E71990014C305 /* Models */,
 				059F42CF219E6FA40014C305 /* Networking */,
 				059F42A9219E3BAE0014C305 /* Subclass */,
 				05C08361219E003A000C58A2 /* Extensions */,
@@ -172,6 +175,14 @@
 				059F42CD219E6E6C0014C305 /* ImageStore.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		059F42D0219E71990014C305 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				059F42D1219E71D20014C305 /* ImageInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		05C0835E219DFF57000C58A2 /* View Controllers */ = {
@@ -358,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				059F42BC219E51290014C305 /* ImageViewerDismissalInteractor.swift in Sources */,
+				059F42D2219E71D20014C305 /* ImageInfo.swift in Sources */,
 				059F42C4219E51290014C305 /* AnimatableImageView.swift in Sources */,
 				059F42BB219E51290014C305 /* ImageViewerTransitioningHandler.swift in Sources */,
 				059F42A8219E33480014C305 /* UINavigationControllerExtension.swift in Sources */,
