@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RevealingSplashView
 
 class ImageListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ListCellDelegate {
     
