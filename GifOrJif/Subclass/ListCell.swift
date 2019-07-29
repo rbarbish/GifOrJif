@@ -35,15 +35,15 @@ class ListCell: UITableViewCell {
     
     func setupCell(imageInfo: ImageInfo, idx: Int) {
         self.imageInfo = imageInfo
-        if let url = imageInfo.imgURLSmall {
-            imgView.kf.setImage(with: url)
+        if let urlSmall = imageInfo.urlSmall {
+            imgView.kf.setImage(with: urlSmall)
         }
-        lblDesc.text = imageInfo.descStr.isEmpty ? "No Description" : imageInfo.descStr
-        let userNameEmpty = imageInfo.instagramUserName.isEmpty
-        let userTxt = userNameEmpty ? "N/A" : imageInfo.instagramUserName
+        lblDesc.text = (imageInfo.description ?? "").isEmpty ? "No Description" : imageInfo.description
+        let userNameEmpty = imageInfo.user.instagram_username?.isEmpty ?? true
+        let userTxt = userNameEmpty ? "N/A" : imageInfo.user.instagram_username!
         btnInstaUser.isEnabled = !userNameEmpty
         btnInstaUser.setTitle("@\(userTxt)", for: .normal)
-        lblLikes.text = "\(imageInfo.numLikes) Likes"
+        lblLikes.text = "\(imageInfo.likes ?? 0) Likes"
         self.idx = idx
     }
     
@@ -52,7 +52,7 @@ class ListCell: UITableViewCell {
     }
     
     @IBAction func atnInstaUser(userButton: UIButton) {
-        delegate?.didSelectUser(username: imageInfo.instagramUserName)
+        delegate?.didSelectUser(username: imageInfo.user.instagram_username ?? "")
     }
     
 }

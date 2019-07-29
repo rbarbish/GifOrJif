@@ -99,6 +99,7 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     func didSelectUser(username: String) {
+        guard !username.isEmpty else { return }
         guard let iURL = URL(string: "instagram://user?username=\(username)") else {
             showGenericError()
             return
@@ -177,7 +178,8 @@ class ImageListViewController: BaseViewController, UITableViewDataSource, UITabl
                         tvc.arrImageInfo.removeAll(keepingCapacity: false)
                     }
                     for item in results {
-                        let imageInfo = ImageInfo(dataDict: item)
+                        guard let itemData = try? JSONSerialization.data(withJSONObject: item, options: []) else { continue }
+                        guard let imageInfo = try? JSONDecoder().decode(ImageInfo.self, from: itemData) else { continue }
                         tvc.arrImageInfo.append(imageInfo)
                     }
                     if !shouldAppend {
